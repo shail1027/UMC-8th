@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0px;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .rec {
+            background-color: greenyellow;
+            height: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .icon {
+            margin-left: 50px;
+        }
+
+        .sub a {
+            margin-right: 100px;
+        }
+
+        @media all and (max-width:767px) {
+            .rec{
+                background-color: aqua;
+                font-size: small;
+                justify-content: space-evenly;
+            }
+
+            .icon{
+                display: none;
+            }
+
+            .sub a{
+                font-size: small;
+                margin-right: 20px;
+            }
+        }
+
+
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="rec">
+        <span class="icon">
+            SMUMC
+        </span>
+        <div class="sub">
+            <a href="#">PROJECTS</a></span>
+            <a href="#">MEMBERS</a></span>
+            <a href="#">NOTICE</a></span>
+        </div>
+    </div>
+</body>
+
+</html>
