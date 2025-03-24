@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>YONG TODO</title>
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+      background-color: #f6f7f9;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: inherit;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 2rem auto;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      padding: 1.5rem;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .input-area {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .input-area input {
+      flex: 1;
+      padding: 0.5rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .input-area button {
+      background-color: #28a745;
+      border: none;
+      color: #fff;
+      padding: 0 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .lists {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .list-box {
+      flex: 1;
+    }
+
+    .list-box h2 {
+      margin: 0 0 0.5rem 0;
+      font-size: 1.1rem;
+    }
+
+    .item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+      background-color: #f8f9fa;
+      border-radius: 4px;
+      padding: 0.5rem;
+    }
+
+    .item button {
+      border: none;
+      border-radius: 4px;
+      padding: 0.3rem 0.6rem;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .complete-btn {
+      background-color: #28a745;
+      color: #fff;
+    }
+
+    .delete-btn {
+      background-color: #dc3545;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>YONG TODO</h1>
+
+    <div class="input-area">
+      <input type="text" id="todoInput" placeholder="할 일 입력" />
+      <button id="addBtn">할 일 추가</button>
+    </div>
+
+    <div class="lists">
+      <div class="list-box">
+        <h2>할 일</h2>
+        <div id="todoList"></div>
+      </div>
+      <div class="list-box">
+        <h2>완료</h2>
+        <div id="doneList"></div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="mission1.ts"></script>
+</body>
+
+</html>
