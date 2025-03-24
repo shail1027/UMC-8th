@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UMC Study Plan</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+      background-color: #eaeef3;
+      height: 100%;
+    }
+    *, *::before, *::after {
+      box-sizing: inherit;
+    }
+
+    /* 메인 컨테이너 */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    /* 상단 제목 스타일 */
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2rem;
+      color: #000000;
+    }
+
+    .input-area {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    .input-area input {
+      width: 80%;
+      max-width: 600px;
+      padding: 0.8rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+    }
+
+    .lists {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .list-box {
+      flex: 1;
+      background-color: #fff;
+      padding: 1rem;
+      min-height: 300px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .list-box h2 {
+      margin: 0 0 1rem 0;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #ddd;
+      font-size: 1.2rem;
+      color: #333;
+    }
+
+    .item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+      padding: 0.5rem;
+      background-color: #f7f7f7;
+    }
+
+    .item:last-child {
+      margin-bottom: 0;
+    }
+
+    .item button {
+      margin-left: 0.5rem;
+      padding: 0.3rem 0.6rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+      border: none;
+      background-color: #879fb8;
+      color: #fff;
+    }
+
+    .item button.delete {
+      background-color: #dc3545;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>UMC Study Plan</h1>
+
+    <div class="input-area">
+      <input type="text" id="todoInput" placeholder="스터디 계획을 작성해주세요! (Enter)" />
+    </div>
+
+    <div class="lists">
+      <div class="list-box">
+        <h2>해야 할 일</h2>
+        <div id="todoList">
+        </div>
+      </div>
+
+      <div class="list-box">
+        <h2>해낸 일</h2>
+        <div id="doneList">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const todoInput = document.getElementById('todoInput');
+    const todoList = document.getElementById('todoList');
+    const doneList = document.getElementById('doneList');
+
+    todoInput.addEventListener('keyup', function(event) {
+      if (event.key === 'Enter' && todoInput.value.trim() !== '') {
+        addTodoItem(todoInput.value.trim());
+        todoInput.value = '';
+      }
+    });
+
+    function addTodoItem(text) {
+      const itemDiv = document.createElement('div');
+      itemDiv.className = 'item';
+      itemDiv.textContent = text;
+
+      const completeBtn = document.createElement('button');
+      completeBtn.textContent = '완료';
+      completeBtn.addEventListener('click', function() {
+        moveToDone(itemDiv);
+      });
+
+      itemDiv.appendChild(completeBtn);
+      todoList.appendChild(itemDiv);
+    }
+
+    function moveToDone(item) {
+      const btn = item.querySelector('button');
+      if (btn) {
+        item.removeChild(btn);
+      }
+      const deleteBtn = document.createElement('button');
+      deleteBtn.textContent = '삭제';
+      deleteBtn.className = 'delete';
+      deleteBtn.addEventListener('click', function() {
+        doneList.removeChild(item);
+      });
+      item.appendChild(deleteBtn);
+
+      doneList.appendChild(item);
+    }
+  </script>
+</body>
+</html>
