@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Grid + Flex Layout</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            height: 100%;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: inherit;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto 1fr auto;
+            height: 100vh;
+        }
+
+        .container>div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .header {
+            background-color: #00224f;
+            grid-column: 1;
+            grid-row: 1;
+        }
+
+        .menu {
+            background-color: #d44f4f;
+            grid-column: 2;
+        }
+
+        .hero {
+            background-color: #4f74d4;
+            grid-column: 1 / span 2;
+            grid-row: 2;
+        }
+
+        .main {
+            background-color: #192b3a;
+            grid-column: 1;
+            grid-row: 3;
+        }
+
+        .right {
+            grid-column: 2;
+            grid-row: 3;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .image {
+            background-color: #a0d9d6;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .extra {
+            background-color: #72b5a4;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .banner {
+            background-color: #f1c94c;
+            grid-column: 1 / span 2;
+            grid-row: 4;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">HEADER</div>
+        <div class="menu">MENU</div>
+        <div class="hero">HERO</div>
+        <div class="main">MAIN</div>
+
+        <div class="right">
+            <div class="image">IMAGE</div>
+            <div class="extra">EXTRA</div>
+        </div>
+
+        <div class="banner">BANNER</div>
+    </div>
+</body>
+
+</html>
