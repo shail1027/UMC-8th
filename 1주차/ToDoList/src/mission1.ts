@@ -1,57 +1,56 @@
 const todoInput = document.getElementById("todoInput") as HTMLInputElement;
 const addBtn = document.getElementById("addBtn") as HTMLButtonElement;
-const todoList = document.getElementById("todoList") as HTMLDivElement;
-const doneList = document.getElementById("doneList") as HTMLDivElement;
+const todoList = document.getElementById("todoList") as HTMLUListElement;
+const doneList = document.getElementById("doneList") as HTMLUListElement;
 
 addBtn.addEventListener("click", () => {
-  const text = todoInput.value.trim();
-  if (text !== "") {
-    addTodoItem(text);
-    todoInput.value = "";
-  }
-});
-
-todoInput.addEventListener("keyup", (event: KeyboardEvent) => {
-  if (event.key === "Enter") {
     const text = todoInput.value.trim();
-    if (text !== "") {
-      addTodoItem(text);
-      todoInput.value = "";
+    if (text !== ""){
+        addTodoItem(text);
+        todoInput.value = "";
     }
-  }
 });
 
-function addTodoItem(text: string): void {
-  const itemDiv = document.createElement("div");
-  itemDiv.className = "item";
-  itemDiv.textContent = text;
+todoInput.addEventListener("keyup", (event : KeyboardEvent) => {
+    if(event.key === "Enter"){
+        const text = todoInput.value.trim();
+        if (text !== ""){
+            addTodoItem(text);
+            todoInput.value = "";
+        }
+    }
+});
 
-  const completeBtn = document.createElement("button");
-  completeBtn.textContent = "완료";
-  completeBtn.className = "complete-btn";
+function addTodoItem(text: string) : void{
+    const itemDiv = document.createElement("div");
+    itemDiv.className = "item";
+    itemDiv.textContent = text;
 
-  completeBtn.addEventListener("click", () => {
-    moveToDone(itemDiv);
-  });
+    const completBtn = document.createElement("button");
+    completBtn.textContent = "완료";
+    
+    completBtn.addEventListener("click", () => {
+        moveToDone(itemDiv);
+    });
 
-  itemDiv.appendChild(completeBtn);
-  todoList.appendChild(itemDiv);
+    itemDiv.appendChild(completBtn);
+    todoList.appendChild(itemDiv);
 }
 
-function moveToDone(item: HTMLDivElement): void {
-  const btns = item.getElementsByTagName("button");
-  if (btns.length > 0) {
-    item.removeChild(btns[0]!);
-  }
+function moveToDone(item: HTMLDivElement): void{
+    const btns = item.getElementsByTagName("button")
+    if(btns.length > 0){
+        item.removeChild(btns[0]!);
+    }
 
-  const deleteBtn = document.createElement("button");
-  deleteBtn.textContent = "삭제";
-  deleteBtn.className = "delete-btn";
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "삭제";
+    deleteBtn.className = "delete-btn";
 
-  deleteBtn.addEventListener("click", () => {
-    doneList.removeChild(item);
-  });
+    item.appendChild(deleteBtn);
+    doneList.appendChild(item);
 
-  item.appendChild(deleteBtn);
-  doneList.appendChild(item);
+    deleteBtn.addEventListener("click", () => {
+        doneList.removeChild(item);
+    });
 }

@@ -23,13 +23,12 @@ function addTodoItem(text) {
     const itemDiv = document.createElement("div");
     itemDiv.className = "item";
     itemDiv.textContent = text;
-    const completeBtn = document.createElement("button");
-    completeBtn.textContent = "완료";
-    completeBtn.className = "complete-btn";
-    completeBtn.addEventListener("click", () => {
+    const completBtn = document.createElement("button");
+    completBtn.textContent = "완료";
+    completBtn.addEventListener("click", () => {
         moveToDone(itemDiv);
     });
-    itemDiv.appendChild(completeBtn);
+    itemDiv.appendChild(completBtn);
     todoList.appendChild(itemDiv);
 }
 function moveToDone(item) {
@@ -40,9 +39,9 @@ function moveToDone(item) {
     const deleteBtn = document.createElement("button");
     deleteBtn.textContent = "삭제";
     deleteBtn.className = "delete-btn";
+    item.appendChild(deleteBtn);
+    doneList.appendChild(item);
     deleteBtn.addEventListener("click", () => {
         doneList.removeChild(item);
     });
-    item.appendChild(deleteBtn);
-    doneList.appendChild(item);
 }
